@@ -60,7 +60,7 @@ jobs:
 
       - name: check in file
         run: |
-          ls /home/runner/work/javaapp/javaapp/target/site/jacoco/
+          ls /home/runner/work/employee-management/employee-management/target/site/jacoco/
           
       - name: Build and package JAR
         run: mvn clean package
