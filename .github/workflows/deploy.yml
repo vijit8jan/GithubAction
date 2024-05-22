@@ -111,10 +111,10 @@ jobs:
 
     - name: Deploy to EC2
       run: |
-        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'rm -rf ~/javaapp*'
-        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'git clone https://shekharbo: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@github.com/shekharbo/javaapp.git'
-        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'sudo chmod +x ~/javaapp/deploy/deploy.sh'
-        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ec2-user@54.237.60.171 'sh ~/javaapp/deploy/deploy.sh'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ubuntu@52.90.218.187 'rm -rf ~/javaapp*'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ubuntu@52.90.218.187 'git clone https://shekharbo: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@github.com/shekharbo/javaapp.git'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ubuntu@52.90.218.187 'sudo chmod +x ~/javaapp/deploy/deploy.sh'
+        ssh -i ~/poc.pem -o StrictHostKeyChecking=no ubuntu@52.90.218.187 'sh ~/javaapp/deploy/deploy.sh'
       
 
               
