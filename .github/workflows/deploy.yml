@@ -80,7 +80,7 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag githubaction-poc:latest 584294315145.dkr.ecr.us-east-1.amazonaws.com/github-poc:latest
+          docker tag github-poc:latest 584294315145.dkr.ecr.us-east-1.amazonaws.com/github-poc:latest
 
       - name: Install Trivy
         run: |
