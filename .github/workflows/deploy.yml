@@ -77,7 +77,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         run: |
           # Fetch the project status from SonarQube API
-          status=$(curl -s -u "$SONAR_TOKEN": "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=net.javaguides:springboot-backend" | jq -r '.projectStatus.status')
+          status=$(curl -s -u "$SONAR_TOKEN": "$SONAR_HOST_URLapi/qualitygates/project_status?projectKey=net.javaguides:springboot-backend" | jq -r '.projectStatus.status')
 
           if [ "$status" != "OK" ]; then
             echo "Quality gate failed"
