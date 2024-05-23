@@ -62,6 +62,30 @@ jobs:
         run: |
           ls /home/runner/work/javaapp/javaapp/target/site/jacoco/
           
+      - name: Install jq
+        run: sudo apt-get install jq
+        
+      - name: Run SonarQube analysis
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn sonar:sonar
+
+      - name: Enforce Quality Gate
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          # Fetch the project status from SonarQube API
+          status=$(curl -s -u "$SONAR_TOKEN": "$SONAR_HOST_URL/api/qualitygates/project_status?projectKey=net.javaguides:springboot-backend" | jq -r '.projectStatus.status')
+
+          if [ "$status" != "OK" ]; then
+            echo "Quality gate failed"
+            exit 1
+          fi
+
+        
+          
       - name: Build and package JAR
         run: mvn clean package
 
